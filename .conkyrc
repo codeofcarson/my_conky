@@ -1,0 +1,87 @@
+# conky configuration
+#
+# The list of variables has been removed from this file in favour
+# of keeping the documentation more maintainable.
+# Check http://conky.sf.net for an up-to-date-list.
+#
+# For ideas about how to modify conky, please see:
+# http://crunchbanglinux.org/forums/topic/59/my-conky-config/
+#
+# For help with conky, please see:
+# http://crunchbanglinux.org/forums/topic/2047/conky-help/
+#
+# Enjoy! :)
+##############################################
+# Settings
+##############################################
+background yes
+use_xft yes
+xftfont Liberation Sans:size=9
+imlib_cache_size 0
+xftalpha 1
+update_interval 1.0
+total_run_times 0
+own_window yes
+own_window_transparent yes
+own_window_type desktop
+#own_window_argb_visual yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+minimum_size 200 200
+maximum_width 250
+draw_shades yes
+draw_outline no
+draw_borders yes
+draw_graph_borders no
+default_color 656667
+default_shade_color 000000
+default_outline_color 828282
+alignment top_right
+gap_x 10
+gap_y 40
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+override_utf8_locale no
+##############################################
+#  Output
+##############################################
+TEXT
+S Y S T E M    I N F O
+${color 990011}${hr}$color
+Host:$alignr$nodename
+Uptime:$alignr$uptime
+RAM:$alignr$mem/$memmax
+Swap usage:$alignr$swap/$swapmax
+Disk usage:$alignr${fs_used /}/${fs_size /}
+CPU usage:  ${color 996DB2}${cpubar cpu1}$color
+Core 1: Temprature: ${color 990011} ${exec sensors|grep 'Core 0'|awk '{print $3}'|sed 's/\+//'|sed 's/\.0°C//'}$color
+Core 2: Temprature: ${color 990011} ${exec sensors|grep 'Core 1'|awk '{print $3}'|sed 's/\+//'|sed 's/\.0°C//'}$color
+
+S H O R T C U T    K E Y S
+${color 008822}${hr}$color
+Alt+F2$alignr Run Dialog
+Alt+F3$alignr Alt Menu
+Super+Tab$alignr Client Menu
+Super+t$alignr Terminal
+Super+f$alignr File Manager
+Super+e$alignr Editor
+Super+r$alignr Rhythmbox
+Super+m$alignr Media Player
+Super+w$alignr Web Browser
+Super+h$alignr Task Manager
+Super+l$alignr Lock Screen
+Super+v$alignr Volume Control
+Super+x$alignr Logout
+PrtSc$alignr Screenshot
+
+M E D I A	P L A Y E R
+${color 222299}${hr}$color
+${offset 69}${font AvantGardeLTMedium:size=10}${exec rhythmbox-client --print-playing-format %tt}
+${offset 69}$color1${exec rhythmbox-client --print-playing-format %ta}$font${exec ret}	
+${execi 1 albumart}${image /home/<user>/.album.jpg -p 0,422 -s 64x64}
+
+$color 
+I N T E R N E T
+${color FFFFFF}${hr}$color
+${image /home/<user>/conky/gmail.png -p 0, 515 -s 20x20}${offset 25}$color1${execi 30 python ~/gmail.py}$color1 new messages
