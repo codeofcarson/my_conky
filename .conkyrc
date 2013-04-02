@@ -55,33 +55,33 @@ RAM:$alignr$mem/$memmax
 Swap usage:$alignr$swap/$swapmax
 Disk usage:$alignr${fs_used /}/${fs_size /}
 CPU usage:  ${color 996DB2}${cpubar cpu1}$color
-Core 1: Temprature: ${color 990011} ${exec sensors|grep 'Core 0'|awk '{print $3}'|sed 's/\+//'|sed 's/\.0°C//'}$color
-Core 2: Temprature: ${color 990011} ${exec sensors|grep 'Core 1'|awk '{print $3}'|sed 's/\+//'|sed 's/\.0°C//'}$color
+Core 1: Temprature: ${color FFFFFF} ${exec sensors|grep 'Core 0'|awk '{print $3}'|sed 's/\+//'|sed 's/\.0°C//'}$color
+Core 2: Temprature: ${color FFFFFF} ${exec sensors|grep 'Core 1'|awk '{print $3}'|sed 's/\+//'|sed 's/\.0°C//'}$color
 
 S H O R T C U T    K E Y S
 ${color 008822}${hr}$color
-Alt+F2$alignr Run Dialog
-Alt+F3$alignr Alt Menu
-Super+Tab$alignr Client Menu
-Super+t$alignr Terminal
-Super+f$alignr File Manager
-Super+e$alignr Editor
+#Alt+F2$alignr Run Dialog
+#Alt+F3$alignr Alt Menu
+#Super+Tab$alignr Client Menu
+#Super+t$alignr Terminal
+#Super+f$alignr File Manager
+#Super+l$alignr Lock Screen
+#Super+w$alignr Web Browser
+#PrtSc$alignr Screenshot
+#Super+e$alignr Editor
 Super+r$alignr Rhythmbox
-Super+m$alignr Media Player
-Super+w$alignr Web Browser
-Super+h$alignr Task Manager
-Super+l$alignr Lock Screen
+Super+m$alignr VLC Media Player
 Super+v$alignr Volume Control
+Super+h$alignr Task Manager
 Super+x$alignr Logout
-PrtSc$alignr Screenshot
 
 M E D I A	P L A Y E R
 ${color 222299}${hr}$color
-${offset 69}${font AvantGardeLTMedium:size=10}${exec rhythmbox-client --print-playing-format %tt}
-${offset 69}$color1${exec rhythmbox-client --print-playing-format %ta}$font${exec ret}	
-${execi 1 albumart}${image /home/<user>/.album.jpg -p 0,422 -s 64x64}
+${offset 69}${font AvantGardeLTMedium:size=10}${exec rhythminfo1.sh}
+${offset 69}$color1${exec ./bin/rhythminfo2.sh}$font${exec ret}	
+${execi 1 albumart}${image /home/rd/.album.jpg -p 0,295 -s 64x64}
 
 $color 
 I N T E R N E T
 ${color FFFFFF}${hr}$color
-${image /home/<user>/conky/gmail.png -p 0, 515 -s 20x20}${offset 25}$color1${execi 30 python ~/gmail.py}$color1 new messages
+${image /home/rd/conky/gmail.png -p 0, 390 -s 20x20}${offset 25}$color1${execi 30 python ~/gmail.py}$color1 new messages
